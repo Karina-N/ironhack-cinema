@@ -3,14 +3,14 @@ import "./App.css";
 
 class Header extends React.Component {
   render() {
-    return <h2>Welcome to IronHack Cinema</h2>;
+    return <h1>Welcome to IronHack Cinema</h1>;
   }
 }
 
 class Main extends React.Component {
   render() {
     return (
-      <main>
+      <main className="movieList">
         <Movie title="The Motorcycle Diaries" />
         <Movie title="An Education" />
         <Movie title="Green Mile" />
@@ -23,10 +23,27 @@ class Main extends React.Component {
 }
 
 class Movie extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+  }
+
+  increaseLikes = () => {
+    this.setState((prevState) => {
+      return {
+        value: prevState.value + 1,
+      };
+    });
+  };
+
   render() {
     return (
       <div className="movie">
-        <h5>{this.props.title}</h5>
+        <h3>{this.props.title}</h3>
+        <p>Number of likes: {this.state.value}</p>
+        <button onClick={this.increaseLikes}>Like</button>
       </div>
     );
   }
