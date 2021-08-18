@@ -16,11 +16,16 @@ class Movie extends React.Component {
     });
   };
 
+  // BANNER OPTION 3
+  // renderBanner = () => {
+  //   return this.props.rating > 8 ? <p className="banner">POPULAR</p> : "";
+  // };
+
   render() {
-    // OPTION 1
+    // STYLING OPTION 1
     // let classList = this.state.value >= 5 ? " movie-popular" : "";
 
-    // OPTION 2
+    // STYLING OPTION 2
     // if (this.state.value >= 5) {
     //   classList += " movie-popular";
     // }
@@ -30,11 +35,32 @@ class Movie extends React.Component {
       backgroundColor: this.state.value > 4 ? "yellowgreen" : "white",
     };
 
+    // BANNER OPTION 2
+    const popularBanner = this.props.rating > 8 ? <p className="banner">POPULAR</p> : "";
+
+    // BANNER OPTION 1
+    // let popularBanner;
+    // if (this.props.rating > 8) {
+    //   popularBanner = <p className="banner">POPULAR</p>;
+    // } else {
+    //   popularBanner = "";
+    // }
+
     return (
       // <div className={"movie " + classList}>
       <div className="movie" style={styleObj}>
         <h3>{this.props.title}</h3>
         <img src={this.props.imgURL} alt={this.props.title + " poster"} />
+
+        {/* BANNER OPTION 4 */}
+        {/* {this.props.rating > 7 && <p className="banner">POPULAR</p>} */}
+
+        {/* BANNER OPTION 3 */}
+        {/* {this.renderBanner()} */}
+
+        {/* BANNER OPTION 1&2 */}
+        {popularBanner}
+
         <p>{this.props.year}</p>
         <p>Rating: {this.props.rating}</p>
         <p>Genres: {this.props.genres}</p>
