@@ -33,15 +33,16 @@ class Movie extends React.Component {
     return (
       // <div className={"movie " + classList}>
       <div className="movie" style={styleObj}>
+        <h3>{this.props.title}</h3>
         <img src={this.props.imgURL} alt={this.props.title + " poster"} />
-        <div>
-          <h3>{this.props.title}</h3>
-          <p>{this.props.year}</p>
-          <p>Rating: {this.props.rating}</p>
-          <p>Genres: {this.props.genres}</p>
-          <p>Number of likes: {this.state.value}</p>
-          <button onClick={this.increaseLikes}>Like</button>
-        </div>
+        <p>{this.props.year}</p>
+        <p>Rating: {this.props.rating}</p>
+        <p>Genres: {this.props.genres}</p>
+        <p>
+          Number of likes: {this.state.value + " "}
+          <button onClick={this.increaseLikes}>+1</button>
+        </p>
+        <button onClick={this.props.methodToDeleteMovie}>Delete</button>
       </div>
     );
   }

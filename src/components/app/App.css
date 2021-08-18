@@ -10,18 +10,16 @@ h1 {
 
 .movieList {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin: 20px auto;
 }
 .movie {
   border: 2px solid lightgrey;
-  width: 600px;
+  width: 300px;
   margin: 10px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
+  padding: 0.5rem;
+  font-size: 14px;
 }
 
 .movie.movie-popular {
@@ -30,4 +28,8 @@ h1 {
 
 .movie img {
   padding: 0 40px;
+}
+
+.movie-content {
+  width: 40%;
 }
