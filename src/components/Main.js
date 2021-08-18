@@ -39,7 +39,11 @@ class Main extends React.Component {
   };
 
   render() {
-    return <main className="movieList">{this.renderMovies()}</main>;
+    return (
+      <main className="movieList">
+        {this.state.moviesArr.length ? this.renderMovies() : <h2>You have no movies in your list! :(</h2>}
+      </main>
+    );
   }
 }
 

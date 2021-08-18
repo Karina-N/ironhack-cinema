@@ -36,7 +36,7 @@ class Movie extends React.Component {
     };
 
     // BANNER OPTION 2
-    const popularBanner = this.props.rating > 8 ? <p className="banner">POPULAR</p> : "";
+    // const popularBanner = this.props.rating > 8 ? <p className="banner">POPULAR</p> : "";
 
     // BANNER OPTION 1
     // let popularBanner;
@@ -52,6 +52,9 @@ class Movie extends React.Component {
         <h3>{this.props.title}</h3>
         <img src={this.props.imgURL} alt={this.props.title + " poster"} />
 
+        {/* BANNER OPTION 5 */}
+        {this.props.rating > 7 ? <p className="banner">POPULAR</p> : <p className="banner average">AVERAGE</p>}
+
         {/* BANNER OPTION 4 */}
         {/* {this.props.rating > 7 && <p className="banner">POPULAR</p>} */}
 
@@ -59,7 +62,7 @@ class Movie extends React.Component {
         {/* {this.renderBanner()} */}
 
         {/* BANNER OPTION 1&2 */}
-        {popularBanner}
+        {/* {popularBanner} */}
 
         <p>{this.props.year}</p>
         <p>Rating: {this.props.rating}</p>
