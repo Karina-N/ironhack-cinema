@@ -1,6 +1,7 @@
 import React from "react";
 import movies from "../data/movies.json";
 import Movie from "./Movie";
+import AddMovie from "./AddMovie";
 
 class Main extends React.Component {
   state = {
@@ -38,10 +39,20 @@ class Main extends React.Component {
     });
   };
 
+  createMovie = (movieData) => {
+    this.setState((prevState) => {
+      return { moviesArr: [...prevState.moviesArr, movieData] };
+    });
+  };
+
   render() {
     return (
-      <main className="movieList">
-        {this.state.moviesArr.length ? this.renderMovies() : <h2>You have no movies in your list! :(</h2>}
+      <main>
+        {/* here through props i'm passing info from parent element(main) to child element(addMovie) */}
+        <AddMovie addMovieHandler={this.createMovie} />
+        <section className="movieList">
+          {this.state.moviesArr.length ? this.renderMovies() : <h2>You have no movies in your list! :(</h2>}
+        </section>
       </main>
     );
   }

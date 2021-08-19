@@ -4,8 +4,16 @@
 
 h1 {
   background-color: lightgrey;
-  padding: 30px;
+  padding: 20px;
   margin: 0;
+  margin-bottom: 20px;
+}
+
+label,
+input {
+  display: block;
+  margin: 5px auto;
+  min-width: 180px;
 }
 
 .movieList {
