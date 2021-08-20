@@ -21,31 +21,7 @@ class Main extends React.Component {
 
     return filteredMovies.map((movieObj) => {
       /* return <Movie key={movieObj.id} title={movieObj.title} year={movieObj.year} imgURL={movieObj.imgURL} rating={movieObj.rating} />; */
-      return (
-        <Movie
-          key={movieObj.id}
-          {...movieObj}
-          methodToDeleteMovie={() => {
-            this.deleteMovie(movieObj.id);
-          }}
-        />
-      );
-    });
-  };
-
-  // DELETE OPTION 2
-  // deleteMovie = (movieId) => {
-  //   const newMoviesArr = this.state.moviesArr.filter((elm) => elm.id !== movieId);
-
-  //   this.setState({
-  //     moviesArr: newMoviesArr,
-  //   });
-  // };
-
-  // DELETE OPTION 1
-  deleteMovie = (movieId) => {
-    this.setState((prevState) => {
-      return { moviesArr: prevState.moviesArr.filter((elm) => elm.id !== movieId) };
+      return <Movie key={movieObj.id} {...movieObj} methodToDeleteMovie={this.props.methodToDeleteMovie} />;
     });
   };
 
@@ -90,13 +66,6 @@ class Main extends React.Component {
     });
   };
 
-  // CREATE MOVIE
-  createMovie = (movieData) => {
-    this.setState((prevState) => {
-      return { moviesArr: [...prevState.moviesArr, movieData] };
-    });
-  };
-
   // SEARCH
   searchMovie = (searchData) => {
     this.setState((prevState) => {
@@ -116,7 +85,7 @@ class Main extends React.Component {
     return (
       <main>
         {/* here through props i'm passing info from parent element(main) to child element(addMovie) */}
-        <AddMovie addMovieHandler={this.createMovie} />
+        <AddMovie methodToCreateMovie={this.props.methodToCreateMovie} />
         <div className="header-buttons">
           <button className="sort" onClick={this.methodToSortMovieByTitle}>
             Sort By Title

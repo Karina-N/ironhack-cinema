@@ -1,16 +1,35 @@
 import React from "react";
 
+// class Summary extends React.Component {
+//   render() {
+//     const averageRating =
+//       this.props.listOfMovies.reduce((acc, currentElm) => {
+//         return acc + currentElm.rating;
+//       }, 0) / this.props.listOfMovies.length;
+
+//     return (
+//       <>
+//         <h3>Number of movies: {this.props.listOfMovies.length}</h3>
+//         <h3>Average rating: {averageRating}</h3>
+//       </>
+//     );
+//   }
+// }
+
 class Summary extends React.Component {
-  averageRating =
-    this.props.listOfMovies.reduce((acc, currentElm) => {
-      return acc + currentElm.rating;
-    }, 0) / this.props.listOfMovies.length;
+  getAverageRating() {
+    return (
+      this.props.listOfMovies.reduce((acc, currentElm) => {
+        return acc + currentElm.rating;
+      }, 0) / this.props.listOfMovies.length
+    );
+  }
 
   render() {
     return (
       <>
         <h3>Number of movies: {this.props.listOfMovies.length}</h3>
-        <h3>Average rating: {this.averageRating}</h3>
+        <h3>Average rating: {this.getAverageRating()}</h3>
       </>
     );
   }

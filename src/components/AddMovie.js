@@ -27,7 +27,10 @@ class AddMovie extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault(); // we tell browser not to refresh when we submit form
-    this.props.addMovieHandler(this.state); // here we pass new movie info from child to parent component
+
+    let { title, year, rating, imgURL } = this.state;
+    rating = parseInt(rating);
+    this.props.methodToCreateMovie({ title, year, rating, imgURL }); // here we pass new movie info from child to parent component
     this.setState({ title: "", year: "", rating: "", imgURL: "" });
   };
 
