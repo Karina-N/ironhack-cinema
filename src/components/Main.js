@@ -9,14 +9,14 @@ class Main extends React.Component {
     super(props);
     this.state = {
       // moviesArr: movies,
-      searchNameTwo: "",
+      searchInputTwo: "",
     };
   }
 
   renderMovies = () => {
-    const { searchNameTwo } = this.state;
+    const { searchInputTwo } = this.state;
     const filteredMovies = this.props.listOfMovies.filter((movie) =>
-      movie.title.toLowerCase().includes(searchNameTwo.toLowerCase())
+      movie.title.toLowerCase().includes(searchInputTwo.toLowerCase())
     );
 
     return filteredMovies.map((movieObj) => {
@@ -71,7 +71,7 @@ class Main extends React.Component {
     this.setState((prevState) => {
       return {
         moviesArr: prevState.moviesArr.filter((movie) =>
-          movie.title.toLowerCase().includes(searchData.searchName.toLowerCase())
+          movie.title.toLowerCase().includes(searchData.searchInputOne.toLowerCase())
         ),
       };
     });
@@ -96,7 +96,7 @@ class Main extends React.Component {
           <Filter addFilterHandler={this.filterMovies} />
           <SearchBar
             addSearchHandler={this.searchMovie}
-            handleSearchInputTwo={(e) => this.setState({ searchNameTwo: e.target.value })}
+            handleSearchInputTwo={(e) => this.setState({ searchInputTwo: e.target.value })}
           />
           <button onClick={this.methodToClearSearch}>Clear Search</button>
         </div>
