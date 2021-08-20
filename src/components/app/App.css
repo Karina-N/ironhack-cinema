@@ -18,19 +18,32 @@ input {
 
 .header-buttons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  margin-left: 10vw;
   margin-top: 60px;
 }
 
-.header-buttons button {
-  margin-right: 60px;
+.header-buttons button,
+.header-buttons input,
+.header-buttons select,
+.header-buttons label {
+  height: 34px;
+  width: 160px;
+  font-size: 16px;
 }
 
+.sort,
+.search,
+.search-form {
+  margin: 0 20px;
+}
 .search-form {
   display: flex;
-  margin-left: 40px;
+  align-items: center;
+}
+
+.form-button {
+  margin-left: 10px;
 }
 
 .movieList {
@@ -41,6 +54,7 @@ input {
 }
 .movie {
   border: 2px solid lightgrey;
+  border-radius: 7px;
   width: 300px;
   margin: 10px;
   padding: 0.5rem;
@@ -62,6 +76,7 @@ input {
 
 .banner {
   background-color: rgb(251, 107, 18);
+  border-radius: 7px;
   color: black;
   font-weight: bold;
   padding: 5px 0;
