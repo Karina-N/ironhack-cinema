@@ -13,7 +13,24 @@ label,
 input {
   display: block;
   margin: 5px auto;
-  min-width: 180px;
+  min-width: 280px;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10vw;
+  margin-top: 60px;
+}
+
+.header-buttons button {
+  margin-right: 60px;
+}
+
+.search-form {
+  display: flex;
+  margin-left: 40px;
 }
 
 .movieList {
