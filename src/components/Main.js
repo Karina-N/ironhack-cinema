@@ -1,19 +1,23 @@
 import React from "react";
-import movies from "../data/movies.json";
 import Movie from "./Movie";
 import AddMovie from "./AddMovie";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 
 class Main extends React.Component {
-  state = {
-    moviesArr: movies,
-    searchNameTwo: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      // moviesArr: movies,
+      searchNameTwo: "",
+    };
+  }
 
   renderMovies = () => {
-    const { moviesArr, searchNameTwo } = this.state;
-    const filteredMovies = moviesArr.filter((movie) => movie.title.toLowerCase().includes(searchNameTwo.toLowerCase()));
+    const { searchNameTwo } = this.state;
+    const filteredMovies = this.props.listOfMovies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchNameTwo.toLowerCase())
+    );
 
     return filteredMovies.map((movieObj) => {
       /* return <Movie key={movieObj.id} title={movieObj.title} year={movieObj.year} imgURL={movieObj.imgURL} rating={movieObj.rating} />; */
@@ -105,7 +109,7 @@ class Main extends React.Component {
   };
 
   methodToClearSearch = () => {
-    this.setState({ moviesArr: movies });
+    //this.setState({ moviesArr: movies });
   };
 
   render() {
@@ -129,7 +133,7 @@ class Main extends React.Component {
         </div>
 
         <section className="movieList">
-          {this.state.moviesArr.length ? this.renderMovies() : <h2>You have no movies in your list! :(</h2>}
+          {this.props.listOfMovies.length ? this.renderMovies() : <h2>You have no movies in your list! :(</h2>}
         </section>
       </main>
     );
