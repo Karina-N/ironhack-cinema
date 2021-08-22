@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
 
   handleSearchSubmit = (event) => {
     event.preventDefault();
-    this.props.addSearchHandler(this.state);
+    this.props.methodToSearchMovie(this.state);
     this.setState({ searchInputOne: "" });
   };
 

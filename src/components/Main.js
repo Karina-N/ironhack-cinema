@@ -2,13 +2,13 @@ import React from "react";
 import Movie from "./Movie";
 import AddMovie from "./AddMovie";
 import SearchBar from "./SearchBar";
-import Filter from "./Filter";
+import Filter from "./Sort";
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // moviesArr: movies,
+      sortInput: "",
       searchInputTwo: "",
     };
   }
@@ -25,80 +25,18 @@ class Main extends React.Component {
     });
   };
 
-  // FILTER
-
-  methodToSortMovieByTitle = () => {
-    this.setState((prevState) => {
-      return {
-        moviesArr: prevState.moviesArr.sort((a, b) => (a.title > b.title ? 1 : -1)),
-      };
-    });
-  };
-
-  methodToSortMovieByRating = () => {
-    this.setState((prevState) => {
-      return {
-        moviesArr: prevState.moviesArr.sort((a, b) => (a.rating > b.rating ? -1 : 1)),
-      };
-    });
-  };
-
-  filterMovies = (filterData) => {
-    console.log(filterData.filterValue);
-    this.setState((prevState) => {
-      if (filterData.filterValue === "Title A-Z") {
-        return {
-          moviesArr: prevState.moviesArr.sort((a, b) => (a.title > b.title ? 1 : -1)),
-        };
-      } else if (filterData.filterValue === "Title Z-A") {
-        return {
-          moviesArr: prevState.moviesArr.sort((a, b) => (a.title > b.title ? -1 : 1)),
-        };
-      } else if (filterData.filterValue === "Rating Desc") {
-        return {
-          moviesArr: prevState.moviesArr.sort((a, b) => (a.rating > b.rating ? -1 : 1)),
-        };
-      } else if (filterData.filterValue === "Rating Asc") {
-        return {
-          moviesArr: prevState.moviesArr.sort((a, b) => (a.rating > b.rating ? 1 : -1)),
-        };
-      }
-    });
-  };
-
-  // SEARCH
-  searchMovie = (searchData) => {
-    this.setState((prevState) => {
-      return {
-        moviesArr: prevState.moviesArr.filter((movie) =>
-          movie.title.toLowerCase().includes(searchData.searchInputOne.toLowerCase())
-        ),
-      };
-    });
-  };
-
-  methodToClearSearch = () => {
-    //this.setState({ moviesArr: movies });
-  };
-
   render() {
     return (
       <main>
         {/* here through props i'm passing info from parent element(main) to child element(addMovie) */}
         <AddMovie methodToCreateMovie={this.props.methodToCreateMovie} />
         <div className="header-buttons">
-          <button className="sort" onClick={this.methodToSortMovieByTitle}>
-            Sort By Title
-          </button>
-          <button className="sort" onClick={this.methodToSortMovieByRating}>
-            Sort By Rating
-          </button>
-          <Filter addFilterHandler={this.filterMovies} />
+          <Filter methodToSortMovies={this.props.methodToSortMovies} />
           <SearchBar
-            addSearchHandler={this.searchMovie}
+            methodToSearchMovie={this.props.methodToSearchMovie}
             handleSearchInputTwo={(e) => this.setState({ searchInputTwo: e.target.value })}
           />
-          <button onClick={this.methodToClearSearch}>Clear Search</button>
+          <button onClick={this.props.methodToClearSearch}>Clear Search</button>
         </div>
 
         <section className="movieList">

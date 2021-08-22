@@ -22,7 +22,7 @@ class Summary extends React.Component {
       this.props.listOfMovies.reduce((acc, currentElm) => {
         return acc + currentElm.rating;
       }, 0) / this.props.listOfMovies.length
-    );
+    ).toFixed(2);
   }
 
   render() {
